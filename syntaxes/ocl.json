@@ -37,7 +37,7 @@
     "contexts": {
       "patterns": [
         {
-          "begin": "(context)\\s+((([\\p{L}_$][\\p{L}_$0-9]*)\\s*::)*)([\\p{L}_$][\\p{L}_$0-9]*(?![\\p{L}_$0-9]|\\s*\\())(::([\\p{L}_$][\\p{L}_$*0-0]*))\\(",
+          "begin": "(context)\\s+((([\\p{L}_$][\\p{L}_$0-9]*)\\s*::\\s*)*)([\\p{L}_$][\\p{L}_$0-9]*(?![\\p{L}_$0-9]|\\s*\\())(\\s*::\\s*([\\p{L}_$][\\p{L}_$*0-9]*))\\s*\\(",
           "end": "\\)",
           "beginCaptures": {
             "1": { "name": "keyword.ocl" },
@@ -50,7 +50,17 @@
           ]
         },
         {
-          "match": "(context)\\s+((([\\p{L}_$][\\p{L}_$0-9]*)\\s*::)*)([\\p{L}_$][\\p{L}_$0-9]*(?![\\p{L}_$0-9]|\\s*\\())",
+          "match": "(context)\\s+((([\\p{L}_$][\\p{L}_$0-9]*)\\s*::\\s*)*)([\\p{L}_$][\\p{L}_$0-9]*(?![\\p{L}_$0-9]|\\s*\\())(\\s*::\\s*([\\p{L}_$][\\p{L}_$*0-9]*))\\s*:\\s*([\\p{L}_$][\\p{L}_$*0-9]*)",
+          "captures": {
+            "1": { "name": "keyword.ocl" },
+            "4": { "name": "entity.name.section" },
+            "5": { "name": "entity.name.type" },
+            "7": { "name": "variable.other" },
+            "8": { "name": "entity.name.type" }
+          }
+        },
+        {
+          "match": "(context)\\s+((([\\p{L}_$][\\p{L}_$0-9]*)\\s*::\\s*)*)([\\p{L}_$][\\p{L}_$0-9]*(?![\\p{L}_$0-9]|\\s*\\()|\\s*:)",
           "captures": {
             "1": { "name": "keyword.ocl" },
             "4": { "name": "entity.name.section" },
