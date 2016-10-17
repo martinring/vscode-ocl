@@ -1,0 +1,26 @@
+{
+	"name": "ocl",
+	"displayName": "OCL",
+	"description": "OCL support for Visual Studio Code",
+	"version": "0.0.2",
+	"publisher": "martinring",
+	"engines": {
+		"vscode": "^0.10.6"
+	},
+	"categories": [
+		"Languages"
+	],
+	"contributes": {
+		"languages": [{
+			"id": "ocl",
+			"aliases": ["OCL", "ocl"],
+			"extensions": [".ocl"],
+			"configuration": "./ocl.configuration.json"
+		}],
+		"grammars": [{
+			"language": "ocl",
+			"scopeName": "source.ocl",
+			"path": "./syntaxes/ocl.tmLanguage"
+		}]
+	}
+}
