@@ -20,7 +20,7 @@
 		"grammars": [{
 			"language": "ocl",
 			"scopeName": "source.ocl",
-			"path": "./syntaxes/ocl.tmLanguage"
+			"path": "./syntaxes/ocl.json"
 		}]
 	}
 }

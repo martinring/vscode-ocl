@@ -1,0 +1,137 @@
+{
+  "name": "OCL",
+  "fileTypes": [ ".ocl" ],
+  "scopeName": "source.ocl",
+  "uuid": "f1dfa3d5-89a1-4451-92d1-f31748c296e2",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#contexts" },
+    { "include": "#constraints" },
+    { "include": "#keywords" },
+    { "include": "#restricted" },
+    { "include": "#predefined" },
+    { "include": "#strings" },
+    { "include": "#calls" }
+  ],
+  "repository": {
+    "constraints": {
+      "patterns": [
+        {
+          "match": "\\b(pre|post|inv)(\\s+([\\p{L}_$][\\p{L}_$0-9]*)\\s*:)?",
+          "captures": {
+            "1": { "name": "keyword.ocl" },
+            "3": { "name": "entity.name.section" }
+          }
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "begin": "'",
+          "end": "'",
+          "name": "string.quoted.single.ocl"
+        }
+      ]
+    },
+    "contexts": {
+      "patterns": [
+        {
+          "begin": "(context)\\s+((([\\p{L}_$][\\p{L}_$0-9]*)\\s*::)*)([\\p{L}_$][\\p{L}_$0-9]*(?![\\p{L}_$0-9]|\\s*\\())(::([\\p{L}_$][\\p{L}_$*0-0]*))\\(",
+          "end": "\\)",
+          "beginCaptures": {
+            "1": { "name": "keyword.ocl" },
+            "4": { "name": "entity.name.section" },
+            "5": { "name": "entity.name.type" },
+            "7": { "name": "entity.name.method.function" }
+          },
+          "patterns": [
+            { "include": "#parameters" }
+          ]
+        },
+        {
+          "match": "(context)\\s+((([\\p{L}_$][\\p{L}_$0-9]*)\\s*::)*)([\\p{L}_$][\\p{L}_$0-9]*(?![\\p{L}_$0-9]|\\s*\\())",
+          "captures": {
+            "1": { "name": "keyword.ocl" },
+            "4": { "name": "entity.name.section" },
+            "5": { "name": "entity.name.type" }
+          }
+        }
+      ]
+    },
+    "calls": {
+      "patterns": [
+        {
+          "begin": "\\b\\s*(\\.|->)\\s*([\\p{L}_$][\\p{L}_$0-9]*)\\s*\\(",
+          "end": "\\)",
+          "beginCaptures": {
+            "2": { "name": "entity.name.method.function" }
+          },
+          "patterns": [
+            { "include": "#arguments" }
+          ]
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "match": "--.*$",
+          "name": "comment.ocl"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.ocl",
+          "match": "\\b(import|body|context|def|derive|endpackage|false|in|init|inv|invalid|let|null|package|post|pre|self|static|true)\\b"
+        },
+        {
+          "name": "keyword.control.ocl",
+          "match": "\\b(and|else|endif|if|implies|not|or|then|xor)\\b"
+        }
+      ]
+    },
+    "restricted": {
+      "patterns": [
+        {
+          "name": "support.type.ocl",
+          "match": "\\b(Bag|Boolean|Collection|Integer|OclAny|OclInvalid|OclMessage|OclVoid|OrderedSet|Real|Sequence|Set|String|Tuple|UnlimitedNatural)\\b"
+        }
+      ]
+    },
+    "predefined": {
+      "patterns": [
+        {
+          "captures": {
+            "2": { "name": "support.function.ocl entity.name.method" }
+          },
+          "match": "\\b\\s*(\\.|->)\\s*(oclIsTypeOf|oclIsKindOf|oclInState|oclIsNew|oclAsType)\\b"
+        }
+      ]
+    },
+    "parameters": {
+      "patterns": [
+        {
+          "match": "\\s*([^,:\\s\\)\\(]*)\\s*:\\s*([^,:\\s\\)\\(]*)\\s*",
+          "captures": {
+            "1": { "name": "variable.parameter" },
+            "2": { "name": "entity.name.type" }
+          }
+        }
+      ]
+    },
+    "arguments": {
+      "patterns": [
+        { "include": "#keywords" },
+        {
+          "match": "\\s*([^,:\\s\\)\\(]*)\\s*",
+          "captures": {
+            "1": { "name": "variable.parameter" }
+          }
+        }
+      ]
+    }
+  }
+}
