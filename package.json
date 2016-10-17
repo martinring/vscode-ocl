@@ -2,8 +2,12 @@
 	"name": "ocl",
 	"displayName": "OCL",
 	"description": "OCL support for Visual Studio Code",
-	"version": "0.0.2",
+	"version": "0.1.0",
 	"publisher": "martinring",
+	"license": "MIT",
+	"repository": {
+		"url": "https://github.com/martinring/vscode-ocl"
+	},
 	"engines": {
 		"vscode": "^0.10.6"
 	},
