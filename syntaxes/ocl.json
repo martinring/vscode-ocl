@@ -72,14 +72,10 @@
     "calls": {
       "patterns": [
         {
-          "begin": "\\b\\s*(\\.|->)\\s*([\\p{L}_$][\\p{L}_$0-9]*)\\s*\\(",
-          "end": "\\)",
-          "beginCaptures": {
+          "match": "\\b\\s*(\\.|->)\\s*([\\p{L}_$][\\p{L}_$0-9]*)\\s*\\(",
+          "captures": {
             "2": { "name": "entity.name.method.function" }
-          },
-          "patterns": [
-            { "include": "#arguments" }
-          ]
+          }
         }
       ]
     },
