@@ -17,7 +17,7 @@
     "constraints": {
       "patterns": [
         {
-          "match": "\\b(pre|post|inv)(\\s+([\\p{L}_$][\\p{L}_$0-9]*)\\s*:)?",
+          "match": "\\b(pre|post|inv)\\b(\\s+([\\p{L}_$][\\p{L}_$0-9]*)\\s*:)?",
           "captures": {
             "1": { "name": "keyword.ocl" },
             "3": { "name": "entity.name.section" }
